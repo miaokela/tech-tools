@@ -1,5 +1,5 @@
 {
-  "name": "tech-tools-app",
+  "name": "tech-tools",
   "version": "1.0.0",
   "description": "科技感小工具应用",
   "main": "dist-electron/main.js",

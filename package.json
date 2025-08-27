@@ -1,0 +1,61 @@
+{
+  "name": "tech-tools-app",
+  "version": "1.0.0",
+  "description": "科技感小工具应用",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development concurrently \"yarn build:electron-dev && yarn dev:renderer\" \"node scripts/wait-and-start-electron.cjs\"",
+    "build": "vue-tsc --noEmit && vite build",
+    "dev:renderer": "vite",
+    "build:electron-dev": "vue-tsc --noEmit && vite build && tsc electron/main.ts --outDir dist-electron --target es2020 --module commonjs",
+    "build:electron": "vue-tsc --noEmit && vite build && tsc electron/main.ts --outDir dist-electron --target es2020 --module commonjs && electron-builder",
+    "electron:dev": "concurrently \"npm run dev\" \"sleep 3 && node wait-for-dev-server.js && electron .\"",
+    "electron:build": "npm run build && tsc electron/main.ts --outDir dist-electron --target es2020 --module commonjs && electron-builder",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@ant-design/icons-vue": "^7.0.1",
+    "@unocss/reset": "^0.53.0",
+    "ant-design-vue": "^4.0.0",
+    "crypto-js": "^4.2.0",
+    "sharp": "^0.34.3",
+    "unocss": "^0.53.0",
+    "vue": "^3.3.0"
+  },
+  "devDependencies": {
+    "@types/crypto-js": "^4.2.2",
+    "@vitejs/plugin-vue": "^4.3.0",
+    "concurrently": "^8.2.0",
+    "cross-env": "^7.0.3",
+    "electron": "^25.9.8",
+    "electron-builder": "^24.0.0",
+    "typescript": "^5.1.0",
+    "vite": "^4.3.0",
+    "vue-tsc": "^3.0.6",
+    "wait-on": "^7.0.0"
+  },
+  "build": {
+    "appId": "com.tech.tools",
+    "productName": "Tech Tools",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "node_modules/**/*"
+    ],
+    "mac": {
+      "icon": "assets/icon.icns",
+      "category": "public.app-category.developer-tools"
+    },
+    "win": {
+      "icon": "assets/icon.png",
+      "target": "nsis"
+    },
+    "linux": {
+      "icon": "assets/icon.png",
+      "target": "AppImage"
+    }
+  }
+}

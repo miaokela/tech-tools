@@ -1,0 +1,33 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="techGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0066FF" />
+      <stop offset="50%" stop-color="#00DDFF" />
+      <stop offset="100%" stop-color="#0066FF" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+  
+  <!-- 深色科技感背景 -->
+  <rect x="32" y="32" width="448" height="448" rx="64" fill="#0A0F2B" />
+  
+  <!-- 科技感字母T设计 - 放大中间部分 -->
+  <g transform="translate(256, 256) scale(1.2)" filter="url(#glow)">
+    <!-- 横条 - 放大并简化设计 -->
+    <path d="M-100,-40 C-50,-50 0,-52 50,-50 100,-48 100,-25 50,-25 0,-27 -50,-25 -100,-25 Z" fill="url(#techGradient)" opacity="0.9"/>
+    
+    <!-- 竖条 - 放大并简化设计 -->
+    <path d="M-30,-25 C-15,-25 -5,-20 -5,90 C-5,100 -15,105 -30,105 C-45,105 -55,100 -55,90 C-55,-20 -45,-25 -30,-25 Z" fill="url(#techGradient)" opacity="0.9"/>
+    <path d="M30,-25 C45,-25 55,-20 55,90 C55,100 45,105 30,105 C15,105 5,100 5,90 C5,-20 15,-25 30,-25 Z" fill="url(#techGradient)" opacity="0.9"/>
+    
+    <!-- 科技感装饰弧线 - 放大 -->
+    <path d="M-70,0 C-45,15 45,15 70,0" fill="none" stroke="#00FFFF" stroke-width="4" stroke-linecap="round"/>
+    <path d="M-45,35 C-25,50 25,50 45,35" fill="none" stroke="#00FFFF" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+  </g>
+  
+  <!-- 外圈科技感光环 - 去掉虚线，改为实线 -->
+  <circle cx="256" cy="256" r="200" fill="none" stroke="url(#techGradient)" stroke-width="3" opacity="0.7"/>
+</svg>
